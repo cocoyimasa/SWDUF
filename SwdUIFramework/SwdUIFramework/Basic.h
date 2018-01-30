@@ -1,6 +1,7 @@
 #ifndef _BASIC_H
 #define _BASIC_H
 #include <iostream>
+#define TO_STRING(TYPE,VAL) L"Handle<"#TYPE">"#VAL
 namespace swd{
 	class Object{
 	public:
@@ -10,7 +11,22 @@ namespace swd{
 			return L"Object";
 		}
 	};
-
+	template<typename T>
+    	class Handle : public Object{
+    	public:
+        	Handle(){}
+        	Handle(T val){
+            		this->val = val;
+        	}
+        	T Val(){
+            		return this->val;
+        	}
+        	std::wstring ToString() const{
+            		return TO_STRING(T,val);
+        	}
+    	protected:
+        	T val;
+    	};
 	struct Point{
 		int x;
 		int y;
