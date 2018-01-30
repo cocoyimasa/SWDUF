@@ -27,6 +27,31 @@ namespace swd{
     	protected:
         	T val;
     	};
+	//Maybe,Just,Nothing
+    	template<typename T>
+    	class Maybe{
+    	public:
+        	Maybe(T val)
+        	:val(val){}
+    	public:
+        	T val;
+    	};
+    	template<typename T>
+    	class Nothing: public Maybe<T>{
+    	public:
+        	Nothing(T val)
+        	:Maybe<T>(val){}
+    	public:
+		T val;
+    	};
+    	template<typename T>
+    	class Just: public Maybe<T>{
+    	public:
+        	Just(T val)
+        	:Maybe<T>(val){}
+    	public:
+        	T val;
+    	};
 	struct Point{
 		int x;
 		int y;
